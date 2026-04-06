@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deutsch Voice Coach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <p class="eyebrow">Deutsch Voice Coach</p>
+          <h1>Accent-first German agent</h1>
+        </div>
+
+        <section class="panel">
+          <label class="field-label" for="mode">Mode</label>
+          <select id="mode">
+            <option value="live">Live Conversation</option>
+            <option value="score">Accent Score</option>
+            <option value="meeting">Meeting Simulation</option>
+          </select>
+
+          <label class="field-label" for="meeting-topic">Meeting topic</label>
+          <input
+            id="meeting-topic"
+            type="text"
+            value="weekly project update with a manager"
+            placeholder="Sprint planning, client call, standup..."
+          />
+
+          <label class="field-label" for="topic">Practice topic</label>
+          <input id="topic" type="text" value="introducing yourself at work" />
+
+          <div class="button-grid">
+            <button id="connect-btn" class="primary">Start turn</button>
+            <button id="disconnect-btn" class="ghost" disabled>Clear chat</button>
+            <button id="drill-btn" class="ghost">Generate drill</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="score-head">
+            <span class="field-label">Accent score</span>
+            <span id="score-pill">--</span>
+          </div>
+          <p id="score-summary" class="muted">
+            Record a short phrase to get a pronunciation score and letter-by-letter coaching.
+          </p>
+
+          <label class="field-label" for="target-text">Target text</label>
+          <textarea id="target-text" rows="6">
+Guten Morgen, danke für Ihre Zeit. Ich möchte heute kurz den Projektstatus erklären.
+          </textarea>
+
+          <div class="button-grid">
+            <button id="record-btn" class="primary">Record phrase</button>
+            <button id="score-btn" class="ghost" disabled>Analyze accent</button>
+            <button id="speak-btn" class="ghost">Play German voice</button>
+          </div>
+        </section>
+      </aside>
+
+      <main class="chat-stage">
+        <section class="hero panel">
+          <div>
+            <p class="eyebrow">Voice feedback</p>
+            <h2>Analysiert Ihren Akzent in Echtzeit und optimiert gezielt Ihre Aussprache</h2>
+          </div>
+          <div class="status-box">
+            <span class="status-dot"></span>
+            <span id="connection-status">Idle</span>
+          </div>
+        </section>
+
+        <section id="cards" class="cards">
+          <article class="panel card">
+            <p class="card-label">Pronunciation focus</p>
+            <h3 id="focus-title">Umlaute, rhythm, sentence flow</h3>
+            <p id="focus-body">
+              Use short push-to-talk turns for immediate spoken correction, then score mode for concrete drill notes.
+            </p>
+          </article>
+          <article class="panel card">
+            <p class="card-label">Meeting simulation</p>
+            <h3>German work scenarios</h3>
+            <p id="meeting-body">
+              Switch to Meeting Simulation to practice standups, retros, introductions, and manager updates.
+            </p>
+          </article>
+        </section>
+
+        <section id="chat" class="chat panel"></section>
+      </main>
+    </div>
+
+    <template id="message-template">
+      <article class="message">
+        <div class="avatar"></div>
+        <div class="bubble-wrap">
+          <div class="meta"></div>
+          <div class="bubble"></div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+  </html>
